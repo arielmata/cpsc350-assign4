@@ -1,33 +1,35 @@
 1) Identifying information:
-a. Full name: Ariel Gutierrez
-b. Student ID: 2318163
-c. Chapman email: arigutierrez@chapman.edu
-d. Course number and section: CPSC 350-01
-e. Assignment or exercise number: Assignment 4
+1. Name: Ariel Gutierrez
+2. Student ID: 2318163
+3. Email: arigutierrez@chapman.edu
+4. Class: CPSC 350-01
+5. Assignment: Assignment 4
 
 2) Source Files
 assign4.cpp
 assign4.h
 DoublyLinkedList.h
-GenListNode.h
+EmptyDoublyException.h
+EmptyQueueException.h
 GenQueue.h
+ListNode.h
 main.cpp
 student.cpp
 student.h
 window.cpp
 window.h
 
-3) Any known compile or runtime errors, code limitations, or deviations from the assignment specification
+3) Known erros
 N/A
 
-4) A list of all references used to complete the assignment, including peers
+4) References
 Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
 Generic Queue Operations : ZyBooks CPSC350: Data Structures
 sort() function - https://www.cplusplus.com/articles/NhA0RXSz/
 stoi() function - http://www.cplusplus.com/reference/string/stoi/
 invalid_argument expection: http://www.cplusplus.com/reference/stdexcept/invalid_argument/
 
-5) Instructions for running the assignment.
+5) Instructions
 1. Clone repository to computer
 2. Start and attach compsci docker container
 3. Go to the directory/repository you cloned on computer
