@@ -6,7 +6,7 @@
 5. Assignment: Assignment 4
 
 ## Application Purpose
-A program that simulates and calculate metrics on student wait times and window idle times given a specific traffic flow of students.
+A C++ program that simulates and calculate metrics on student wait times and window idle times given a specific traffic flow of students.
 
 ## Files
 1. assign4.cpp
