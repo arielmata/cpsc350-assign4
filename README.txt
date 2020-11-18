@@ -6,28 +6,28 @@
 5. Assignment: Assignment 4
 
 2) Source Files
-assign4.cpp
-assign4.h
-DoublyLinkedList.h
-EmptyDoublyException.h
-EmptyQueueException.h
-GenQueue.h
-ListNode.h
-main.cpp
-student.cpp
-student.h
-window.cpp
-window.h
+1. assign4.cpp
+2. assign4.h
+3. DoublyLinkedList.h
+4. EmptyDoublyException.h
+5. EmptyQueueException.h
+6. GenQueue.h
+7. ListNode.h
+8. main.cpp
+9. student.cpp
+10. student.h
+11. window.cpp
+12. window.h
 
 3) Known erros
 N/A
 
 4) References
-Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
-Generic Queue Operations : ZyBooks CPSC350: Data Structures
-sort() function - https://www.cplusplus.com/articles/NhA0RXSz/
-stoi() function - http://www.cplusplus.com/reference/string/stoi/
-invalid_argument expection: http://www.cplusplus.com/reference/stdexcept/invalid_argument/
+1. Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
+2. Generic Queue Operations: ZyBooks CPSC350: Data Structures
+3. sort() function: https://www.cplusplus.com/articles/NhA0RXSz/
+4. stoi() function: http://www.cplusplus.com/reference/string/stoi/
+5. invalid_argument expection: http://www.cplusplus.com/reference/stdexcept/invalid_argument/
 
 5) Instructions
 1. Clone repository to computer
