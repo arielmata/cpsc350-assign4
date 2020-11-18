@@ -26,11 +26,11 @@ A C++ program that simulates and calculate metrics on student wait times and win
 N/A
 
 ## References
-Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
-Generic Queue Operations : ZyBooks CPSC350: Data Structures
-sort() function - https://www.cplusplus.com/articles/NhA0RXSz/
-stoi() function - http://www.cplusplus.com/reference/string/stoi/
-invalid_argument expection: http://www.cplusplus.com/reference/stdexcept/invalid_argument/
+1. Creating custom exception: https://riptutorial.com/cplusplus/example/23640/custom-exception
+2. Generic Queue Operations: ZyBooks CPSC350: Data Structures
+3. sort() function: https://www.cplusplus.com/articles/NhA0RXSz/
+4. stoi() function: http://www.cplusplus.com/reference/string/stoi/
+5. invalid_argument expection: http://www.cplusplus.com/reference/stdexcept/invalid_argument/
 
 ## Instructions
 1. Clone repository to computer
