@@ -1,4 +1,4 @@
-//window.cpp - implementation file
+// window.cpp - implementation file
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -12,23 +12,19 @@
 #include "window.h"
 
 Window::Window(){
-  isOpen = false;
+  isOpen = true;
   timeIdle = 0;
-  student = NULL;
 }
 
-Window::~Window(){
-  // Delete student object pointer
-  delete student;
-}
+Window::~Window(){}
 
 // Returns true if window is open, otherwise returns false
-bool Window::isOpen(){
+bool Window::getIsOpen(){
   return isOpen;
 }
 
 // Retruns the time for when the window was idle
-unsigned int Window::getTimeIdle(){
+int Window::getTimeIdle(){
   return timeIdle;
 }
 
@@ -49,20 +45,15 @@ void Window::addStudent(Student s){
 
 // Increments time student was at window by one clock tick
 void Window::addStudentWindowTime(){
-  student->addWindowTime();
+  student.addWindowTime();
 }
 
-// Returns the time student should be at window for
-unsigned int Window::getStudentWindowTime(){
-  return student->getWindowTime();
+// Returns the time student has been at window for
+int Window::getStudentWindowTime(){
+  return student.getWindowTime();
 }
 
-// Returns the time student arrived
-unsigned int Window::getStudentTime(){
-  return student->getTime();
-}
-
-// Returns the time the student has waited in the queue for
-unsigned int Window::getStudentWaitTime(){
-  return student->getWaitTime();
+//Returns the time student needs to be at window
+int Window::getStudentTimeNeeded(){
+  return student.getTimeNeeded();
 }

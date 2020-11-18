@@ -1,4 +1,4 @@
-//Generic List Node for Doubly Linked List - GenListNode.h
+// ListNode.h - Generic List Node for Doubly Linked List
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -9,15 +9,18 @@
 // Assignment 4: A C++ program that simulates and calculate metrics on student
 // wait times and window idle times given a specific traffic flow of students.
 
+#include <stddef.h>
+using namespace std;
+
 template <typename T>
 class ListNode{
   public:
     ListNode(T d);
     ~ListNode();
 
-    int data; // Value stored in node
-    ListNode *next; // Pointer to next node
-    ListNode *prev; // Pointer to previous node
+    T data; // Value stored in node
+    ListNode<T> *next; // Pointer to next node
+    ListNode<T> *prev; // Pointer to previous node
 };
 
 template <typename T>

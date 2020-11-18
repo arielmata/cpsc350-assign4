@@ -1,4 +1,4 @@
-//Generic Doubly Linked List - DoublyLinkedList.h
+// DoublyLinkedList.h - Generic Doubly Linked List
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -9,7 +9,8 @@
 // Assignment 4: A C++ program that simulates and calculate metrics on student
 // wait times and window idle times given a specific traffic flow of students.
 
-#include "GenListNode.h"
+#include "ListNode.h"
+#include "EmptyDoublyException.h"
 #include <iostream>
 
 template <typename T>
@@ -20,7 +21,7 @@ class DoublyLinkedList{
 
     void insertFront(T d);
     void insertBack(T d);
-    void insertAfter(GenListNode *curr, T d);
+    void insertAfter(ListNode<T> *curr, T d);
     T removeFront();
     T removeBack();
     int find(T value); // AKA search()
@@ -28,15 +29,16 @@ class DoublyLinkedList{
     T removeNode(T key); // Key represents the value we are going to search for and delete
 
     void printList();
+    void printListReverse();
     bool isEmpty();
-    unsigned int getSize();
+    int getSize();
     T getFront();
     T getBack();
-    void ListInsertionSortDoublyLinked();
+    void listInsertionSortDoublyLinked();
   private:
-    ListNode *front;
-    ListNode *back;
-    unsigned int size;
+    ListNode<T> *front;
+    ListNode<T> *back;
+    int size;
 };
 
 template <typename T>
@@ -55,7 +57,7 @@ DoublyLinkedList<T>::~DoublyLinkedList(){
 
 template <typename T>
 void DoublyLinkedList<T>::insertFront(T d){
-  GenListNode *node = new GenListNode<T>(d);
+  ListNode<T> *node = new ListNode<T>(d);
 
   if(size == 0){
     back = node;
@@ -69,7 +71,7 @@ void DoublyLinkedList<T>::insertFront(T d){
 
 template <typename T>
 void DoublyLinkedList<T>::insertBack(T d){
-  GenListNode *node = new GenListNode<T>(d);
+  ListNode<T> *node = new ListNode<T>(d);
 
   if(front == NULL){
     front = node;
@@ -82,8 +84,8 @@ void DoublyLinkedList<T>::insertBack(T d){
 }
 
 template <typename T>
-void DoublyLinkedList<T>::insertAfter(GenListNode *curr, T d){
-  GenListNode *node = new GenListNode<T>(d);
+void DoublyLinkedList<T>::insertAfter(ListNode<T> *curr, T d){
+  ListNode<T> *node = new ListNode<T>(d);
 
   if(front == NULL){
     front = node;
@@ -93,7 +95,7 @@ void DoublyLinkedList<T>::insertAfter(GenListNode *curr, T d){
     node->prev = back;
     back = node;
   }else{
-    GenListNode *suc = curr->next;
+    ListNode<T> *suc = curr->next;
     node->next = suc;
     node->prev = curr;
     curr->next = node;
@@ -103,56 +105,58 @@ void DoublyLinkedList<T>::insertAfter(GenListNode *curr, T d){
 
 template <typename T>
 T DoublyLinkedList<T>::removeFront(){
-  GenListNode *node = front;
+  ListNode<T> *node = front;
 
   if(isEmpty()){
-    return NULL;
-  }
-
-  if(front->next == NULL){
-    back = NULL;
+    //throw excepetion
+    throw EmptyDoublyException("Doubly Linked List is empty.");
   }else{
-    front->next->prev = NULL;
-  }
-  front = front->next;
-  --size;
-  node->next = NULL;
-  T temp = node->data;
+    if(front->next == NULL){
+      back = NULL;
+    }else{
+      front->next->prev = NULL;
+    }
+    front = front->next;
+    --size;
+    node->next = NULL;
+    T temp = node->data;
 
-  delete node;
-  return temp;
+    delete node;
+    return temp;
+  }
 }
 
 template <typename T>
 T DoublyLinkedList<T>::removeBack(){
-  GenListNode *node = back;
+  ListNode<T> *node = back;
   if(isEmpty()){
-    //IDK WHAT TO DO
-    return NULL;
+    //throw excepetion
+    throw EmptyDoublyException("Doubly Linked List is empty.");
   }
+  else{
+    if(back->prev == NULL){
+      front == NULL;
+    }else{
+      back->prev->next = NULL;
+    }
+    back = node->prev;
+    --size;
+    node->prev = NULL;
+    T temp = node->data;
 
-  if(back->prev == NULL){
-    front == NULL;
-  }else{
-    back->prev->next = NULL;
+    delete node;
+    return temp;
   }
-  back = node->prev;
-  --size;
-  node->prev = NULL;
-  T temp = node->data;
-
-  delete node;
-  return temp;
 }
 
 template <typename T>
 int DoublyLinkedList<T>::find(T value){
   int pos = -1;
-  GenListNode *curr = front;
+  ListNode<T> *curr = front;
 
   while(curr != NULL){
     ++pos;
-    if(value = curr->data)
+    if(value == curr->data)
       break;
     curr = curr->next;
   }
@@ -165,7 +169,7 @@ int DoublyLinkedList<T>::find(T value){
 
 template <typename T>
 T DoublyLinkedList<T>::removeNode(T key){
-  GenListNode *curr = front;
+  ListNode<T> *curr = front;
 
   //Loop through list to find the key/value
   while(curr->data != key){
@@ -201,8 +205,8 @@ T DoublyLinkedList<T>::removeNode(T key){
 /*
 int DoublyLinkedList<T>::deletePos(int pos){
   int p = 0;
-  ListNode *curr = front;
-  ListNode *prev = front;
+  ListNode<T> *curr = front;
+  ListNode<T> *prev = front;
   //erorr check if pos is not negative
   while(p != pos){
     //iterate and update my pointers
@@ -223,24 +227,24 @@ int DoublyLinkedList<T>::deletePos(int pos){
 
 template <typename T>
 void DoublyLinkedList<T>::printList(){
-  GenListNode *curr = front;
+  ListNode<T> *curr = front;
 
   while(curr != NULL){
     cout << curr->data << endl;
     curr = curr->next;
   }
-  delete curr;
+
 }
 
 template <typename T>
 void DoublyLinkedList<T>::printListReverse(){
-  GenListNode *curr = back;
+  ListNode<T> *curr = back;
 
   while(curr != NULL){
     cout << curr->data << endl;
     curr = curr->prev;
   }
-  delete curr;
+
 }
 
 template <typename T>
@@ -249,27 +253,27 @@ bool DoublyLinkedList<T>::isEmpty(){
 }
 
 template <typename T>
-unsigned int DoublyLinkedList<T>::getSize(){
+int DoublyLinkedList<T>::getSize(){
   return size;
 }
 
 template <typename T>
 T DoublyLinkedList<T>::getFront(){
-  return front;
+  return front->data;
 }
 
 template <typename T>
 T DoublyLinkedList<T>::getBack(){
-  return back;
+  return back->data;
 }
 
 template <typename T>
-void DoublyLinkedList<T>::InsertionSortDoublyLinked(){
-  GenListNode *curr = list->front->next;
+void DoublyLinkedList<T>::listInsertionSortDoublyLinked(){
+  ListNode<T> *curr = front->next;
   while (curr != NULL){
-    GenListNode *nextNode = curr->next;
-    GenListNode *searchNode = curr->prev;
-    while ((searchNode != NULL) && (searchNode->data > curr->data){
+    ListNode<T> *nextNode = curr->next;
+    ListNode<T> *searchNode = curr->prev;
+    while ((searchNode != NULL) && (searchNode->data > curr->data)){
       searchNode = searchNode->prev;
     }
 

@@ -1,4 +1,4 @@
-//simulation.h - header file  (maybe name it as assign3.h)
+// assign4.h - header file  (maybe name it as assign3.h)
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -10,8 +10,10 @@
 // wait times and window idle times given a specific traffic flow of students.
 
 #include "GenQueue.h"
-#include "student.h"
 #include "window.h"
+#include <algorithm> // sort()
+#include <fstream> // open and read files
+#include <stdexcept> // invalid_argument exception
 
 class Simulation{
 public:
@@ -19,22 +21,25 @@ public:
   ~Simulation();
 
   void simulate();
-  void openFile();
+  bool openFile();
   void calculateStatistics();
   void printStatistics();
 private:
   string file; // Name of the file
+
+  // Statistics
   double mean; // Mean student wait time
   double median; // Median student wait time
-  unsigned int longestWait; // Longest student wait time
+  int longestWait; // Longest student wait time
   double numStudents10; // Number of students waiting for over 10 minutes
   double meanIdle; // Mean window idle time
   double longestIdle; // Longest window idle time
   double numWindows5; // Number of windows idle for over 5 minutes
-  unsigned int time; // Time/clock ticks
-  unsigned int numStudents; // Total number of students
+  int time; // Time/clock ticks
+  int numStudents; // Total number of students
+  int numWindows; // Total number of windows
 
-  DoublyLinkedList<Student> *studentQueue;
-  Window **windowArr;
-  int **studentWaitArr;
+  GenQueue<Student> *studentQueue;
+  Window *windowArr;
+  int *studentWaitArr;
 };

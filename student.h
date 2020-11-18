@@ -1,4 +1,4 @@
-//Student.h - header file
+// Student.h - header file
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -9,20 +9,23 @@
 // Assignment 4: A C++ program that simulates and calculate metrics on student
 // wait times and window idle times given a specific traffic flow of students.
 
-
 class Student{
-  public:
-    Student(unsigned int t, unsigned int tn); // Overloaded constructor
-    ~Student(); // Destructor
+public:
+  Student(); // Default constructor
+  Student(int t, int tn); // Overloaded constructor
+  ~Student(); // Destructor
 
-    void setWaitTime(unsigned int wt);
-    void addWindowTime();
+  void setWaitTime(int wt);
+  void addWindowTime();
 
-    unsigned int getTimeArrived();
-    unsigned int getWaitTime();
-    unsigned int getWindowTime();
-  private:
-    unsigned int timeArrived; // Time that the student arrived
-    unsigned int waitTime; // Time that student has waited for
-    unsigned int windowTime; // Amount of ime that student will stay at window
+  int getTimeArrived();
+  int getTimeNeeded();
+  int getWaitTime();
+  int getWindowTime();
+
+private:
+  int timeArrived; // Time that the student arrived
+  int timeNeeded;  // Amount of time that student will stay at window
+  int waitTime; // Time that student has waited for in queue
+  int windowTime; // Amount of time that student has stayed at window
 };

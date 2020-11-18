@@ -14,7 +14,7 @@ SOURCES := *.cpp
 
 #stuff you don't need to worry about
 INCLUDES := -I ../include
-EXT := exe
+EXT := out
 CC := g++
 
 all:

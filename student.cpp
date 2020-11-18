@@ -1,4 +1,4 @@
-//Student.cpp - implentation file
+// Student.cpp - implementation file
 
 // Full name: Ariel Gutierrez
 // Student ID: 2318163
@@ -11,7 +11,14 @@
 
 #include "student.h"
 
-Student::Student(unsigned int t, unsigned int tn){
+Student::Student(){
+  timeArrived = 0;
+  timeNeeded = 0;
+  waitTime = 0;
+  windowTime = 0;
+}
+
+Student::Student(int t, int tn){
   timeArrived = t;
   timeNeeded = tn;
   waitTime = 0;
@@ -21,7 +28,7 @@ Student::Student(unsigned int t, unsigned int tn){
 Student::~Student(){}
 
 // Sets wait time to input int wt
-void Student::setWaitTime(unsigned int wt){
+void Student::setWaitTime(int wt){
   waitTime = wt;
 }
 
@@ -33,18 +40,21 @@ void Student::addWindowTime(){
 
 
 // Returns timeArrived
-unsigned int Student::getTimeArrived(){
+int Student::getTimeArrived(){
   return timeArrived;
 }
 
+//Returns timeNeeded
+int Student::getTimeNeeded(){
+  return timeNeeded;
+}
 
 // Returns waitTime
-unsigned int Student::getWaitTime(){
+int Student::getWaitTime(){
   return waitTime;
 }
 
-
 // Returns windowTime
-unsigned int Student::getWindowTime(){
+int Student::getWindowTime(){
   return windowTime;
 }
